@@ -1,0 +1,68 @@
+menu "Network"
+
+config SYNO_SWITCH_NET_DEVICE_NAME
+	bool "Switch net device name to collocate with hardware design"
+	default n
+
+config SYNO_MAX_SWITCHABLE_NET_DEVICE
+	int "Max number of switch net device name"
+	default 8
+	depends on SYNO_SWITCH_NET_DEVICE_NAME
+
+config SYNO_NET_DEVICE_ENCODING_LENGTH
+	int "Encoding length of net device"
+	default 6
+	depends on SYNO_SWITCH_NET_DEVICE_NAME
+
+config SYNO_SKIP_RXDROP_BY_CORE
+	bool "Skip RX packets drop is increasing"
+	default y
+
+config SYNO_REMOVE_TCP_DEBUG
+	bool "Remove tcp debug message"
+	default y
+
+config SYNO_IPV6_RFC_4862
+	bool "IPv6 Stateless Address Autoconfiguration"
+	default y
+
+config SYNO_BONDING_INIT_STATUS
+	bool "Initial the bonding status"
+	default y
+
+config SYNO_BONDING_FIX_ACTIVE
+	bool "Fix a bug in active backup bonding mode"
+	default y
+
+config SYNO_IPV6_LINKLOCAL
+	bool "Assign an interface to IPV6 link local address automatically."
+	default y
+
+config SYNO_COMPAT_WIRELESS
+	bool "Select kernel config for compat-wireless"
+	default y
+	select WIRELESS_EXT
+	select WEXT_PRIV
+
+config SYNO_SFP_UNSUPPORTED_NOTIFY
+	bool "SFP+ module unsupported notify"
+	default y
+
+config SYNO_PHY_INIT
+	bool "syno initialization of phy device"
+	default n
+
+config SYNO_PHY_INIT_88E1514
+	bool "Enable phy driver of the phy 88E1514"
+	default y
+	depends on SYNO_PHY_INIT
+
+config SYNO_IPV6_EXPORT_IN6ADDR_ANY
+	bool "Export in6addr_any value for modules"
+	default y
+
+config SYNO_CVE_2016_5696
+	bool "Fix CVE-2016-5696"
+	default y
+
+endmenu #Network
